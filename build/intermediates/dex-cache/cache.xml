@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\hp\AndroidStudioProjects\LOL\app\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e19387dc3b060af32f5401f84fbe246635256955">
+        <dex dex="C:\Users\hp\AndroidStudioProjects\LOL\app\build\intermediates\pre-dexed\debug\android-support-v4-743a76d86d1e7e80f326018f5d9af636d7e49828.jar" />
+    </item>
+
+</items>
