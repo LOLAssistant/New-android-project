@@ -9,6 +9,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 
+
+    public static String username=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
