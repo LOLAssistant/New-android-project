@@ -84,15 +84,19 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/main_bottom"
         android:layout_alignParentTop="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:id="@+id/linearLayout3">
         <!-- viewpager类，用来切换页面 -->
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/tabpager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" >
-        </android.support.v4.view.ViewPager>
     </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/tabpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_alignBottom="@+id/linearLayout3"
+        android:layout_alignParentLeft="true">
+    </android.support.v4.view.ViewPager>
 
 </RelativeLayout>

@@ -15,10 +15,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent();
-        intent.setClass(MainActivity.this, MainActivity2.class);
-        startActivity(intent);
-        finish();
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment, new LoginFragment())
+                .commit();
     }
 
 

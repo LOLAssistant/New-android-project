@@ -34,7 +34,7 @@ public class RegisterFragment extends Fragment {
                 case 0:
                     getFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragment, new Loginfragment())
+                            .replace(R.id.fragment, new LoginFragment())
                             .addToBackStack(null)
                             .commit();
                     break;
@@ -126,7 +126,7 @@ public class RegisterFragment extends Fragment {
                             if(200== responseCode){//连接成功
 
                                 //当正确响应时处理数据
-                                StringBuffer sb = new StringBuffer();
+                               // StringBuffer sb = new StringBuffer();
                                 String readLine;
                                 BufferedReader responseReader;
                                 responseReader = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));

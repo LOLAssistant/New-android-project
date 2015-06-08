@@ -18,7 +18,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -26,35 +25,13 @@ import java.net.URLEncoder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Loginfragment extends Fragment {
+public class LoginFragment extends Fragment {
 
 
 
-    Handler handler=new Handler(){
+    Handler handler;
 
-        @Override
-        public void handleMessage(Message msg) {
-
-            switch (msg.what){
-                case 0:
-                    Intent intent=new Intent();
-                    intent.setClass(Loginfragment.this.getActivity(), MainActivity2.class);
-                    startActivity(intent);
-                    break;
-                case 1:
-                    Toast.makeText(getActivity(),"用户名或密码错误",Toast.LENGTH_LONG).show();
-                    break;
-                case 2:
-                    Toast.makeText(getActivity(),"服务器问题，请稍后再试",Toast.LENGTH_LONG).show();
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
-
-        }
-    };
-
-    public Loginfragment() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 
@@ -70,7 +47,29 @@ public class Loginfragment extends Fragment {
         Button loginButton=(Button)view.findViewById(R.id.login);
         Button registerButton=(Button)view.findViewById(R.id.register);
 
+        handler=new Handler(){
 
+            @Override
+            public void handleMessage(Message msg) {
+
+                switch (msg.what){
+                    case 0:
+                        Intent intent=new Intent();
+                        intent.setClass(LoginFragment.this.getActivity(), MainActivity2.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Toast.makeText(getActivity(),"用户名或密码错误",Toast.LENGTH_LONG).show();
+                        break;
+                    case 2:
+                        Toast.makeText(getActivity(),"服务器问题，请稍后再试",Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        super.handleMessage(msg);
+                }
+
+            }
+        };
 
         loginButton.setOnClickListener(new View.OnClickListener(){
 

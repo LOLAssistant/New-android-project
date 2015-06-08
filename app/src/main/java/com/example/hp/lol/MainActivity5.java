@@ -3,12 +3,15 @@ package com.example.hp.lol;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -22,21 +25,45 @@ public class MainActivity5 extends Activity implements View.OnClickListener{
 
     private ImageButton imageButton_add_ensure;
     private ImageButton imageButton_add_cancel;
-    private EditText editText_qq,editText_password,editText_tel,editText_id_card;
+    private EditText editText_qq,editText_password;
     private Intent intent;
-
+    private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity5);
+
+        handler =new Handler(){
+
+            @Override
+            public void handleMessage(Message msg) {
+
+                switch (msg.what){
+                    case 0:
+                        Toast.makeText(MainActivity5.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
+                        Intent intent=new Intent();
+                        intent.setClass(MainActivity5.this,MainActivity4.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Toast.makeText(MainActivity5.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
+                        break;
+                    case 2:
+                        Toast.makeText(MainActivity5.this,"服务器问题，请稍后再试",Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        super.handleMessage(msg);
+                }
+
+            }
+        };
+
 
         intent = new Intent();
         imageButton_add_cancel = (ImageButton)findViewById(R.id.imageButton_add_cancel);
         imageButton_add_ensure = (ImageButton)findViewById(R.id.imageButton_add_ensure);
         editText_qq = (EditText)findViewById(R.id.editText_add_QQ);
         editText_password = (EditText)findViewById(R.id.editText_add_Password);
-        editText_id_card = (EditText)findViewById(R.id.editText_add_ID_card);
-        editText_tel = (EditText)findViewById(R.id.editText_add_Tel);
 
         imageButton_add_ensure.setOnClickListener(this);
         imageButton_add_cancel.setOnClickListener(this);
@@ -74,11 +101,9 @@ public class MainActivity5 extends Activity implements View.OnClickListener{
                     public void run() {
                         String qq = editText_qq.getText().toString();
                         String password = editText_password.getText().toString();
-                        String tel = editText_tel.getText().toString();
-                        String id_card = editText_id_card.getText().toString();
 
                         try{
-                            String pathUrl = "http://";
+                            String pathUrl = "http://localhost:30539/BindLOLAccount";
                             URL url = new URL(pathUrl);
                             HttpURLConnection httpConn = (HttpURLConnection)url.openConnection();
                             httpConn.setDoOutput(true);
@@ -87,7 +112,7 @@ public class MainActivity5 extends Activity implements View.OnClickListener{
                             httpConn.setRequestProperty("Charset","UTF-8");
                             httpConn.setRequestProperty("accept","*/*");
                             OutputStream outputStream = httpConn.getOutputStream();
-                            outputStream.write(("add_qq="+ URLEncoder.encode(qq,"utf-8")+"&"+"add_password="+password+"&"+"add_tel="+tel+"&"+"add_idcard="+id_card).getBytes());
+                            outputStream.write(("username=" + MainActivity.username + "&" + "qq=" + URLEncoder.encode(qq, "utf-8") + "&" + "password="+password).getBytes());
                             outputStream.flush();
 
                             int responseCode = httpConn.getResponseCode();
@@ -97,17 +122,16 @@ public class MainActivity5 extends Activity implements View.OnClickListener{
                                 BufferedReader responseReader;
                                 responseReader = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
                                 String result = responseReader.readLine();
-                                Log.i("test",result);
+                                handler.sendEmptyMessage(0);
                             }else{
-                                Log.i("test","error");
+                                handler.sendEmptyMessage(1);
                             }
                         }catch (Exception ex){
+                            handler.sendEmptyMessage(2);
                             ex.printStackTrace();
                         }
                     }
                 }.start();
-                intent.setClass(MainActivity5.this,MainActivity4.class);
-                startActivity(intent);
                 break;
 
             case R.id.imageButton_add_cancel:
@@ -116,4 +140,5 @@ public class MainActivity5 extends Activity implements View.OnClickListener{
                 break;
         }
     }
+
 }

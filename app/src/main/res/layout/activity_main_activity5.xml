@@ -50,34 +50,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp">
-            <EditText
-                android:hint="Tel"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="25dp"
-                android:gravity="center_vertical"
-                android:id="@+id/editText_add_Tel"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp">
-            <EditText
-                android:hint="ID card"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="25dp"
-                android:gravity="center_vertical"
-                android:id="@+id/editText_add_ID_card"/>
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
