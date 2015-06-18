@@ -1,6 +1,5 @@
 package com.example.hp.lol;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -19,10 +18,10 @@ import android.widget.PopupWindow;
 import java.util.ArrayList;
 
 
-public class MainActivity2 extends FragmentActivity {
+public class HomeActivity extends FragmentActivity {
 
 
-    public static MainActivity2 instance = null;
+    public static HomeActivity instance = null;
 
     private ViewPager mTabPager;
     private ImageView mTabImg;
@@ -61,9 +60,9 @@ public class MainActivity2 extends FragmentActivity {
         int displayWidth = currDisplay.getWidth();
 
         fragmentList = new ArrayList<Fragment>();
-        Fragment f1 = new Fragment1();
-        Fragment f2 = new Fragment2();
-        Fragment f3 = new Fragment3();
+        Fragment f1 = new HallFragment();
+        Fragment f2 = new FriendFragment();
+        Fragment f3 = new PersonFragment();
         fragmentList.add(f1);
         fragmentList.add(f2);
         fragmentList.add(f3);

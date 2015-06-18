@@ -17,21 +17,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity2"
+            android:name=".HomeActivity"
             android:label="@string/title_activity_main_activity2" >
         </activity>
         <activity
             android:name=".MainActivity3"
             android:label="@string/title_activity_main_activity3" >
         </activity>
-
         <activity
-            android:name=".MainActivity4"
+            android:name=".PersonLOLActivity"
             android:label="@string/title_activity_main_activity4" >
         </activity>
         <activity
-            android:name=".MainActivity5"
+            android:name=".AddLOLActivity"
             android:label="@string/title_activity_main_activity5" >
+        </activity>
+        <activity
+            android:name=".BorrowActivity"
+            android:label="@string/title_activity_borrow" >
+        </activity>
+        <activity
+            android:name=".ModifyPersonInfoActivity"
+            android:label="@string/title_activity_modify_person_info" >
+        </activity>
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="@string/title_activity_reset_password" >
         </activity>
     </application>
 

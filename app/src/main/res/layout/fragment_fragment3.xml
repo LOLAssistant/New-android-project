@@ -87,23 +87,25 @@
     <ImageButton
         android:layout_width="600dp"
         android:layout_height="40dp"
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageButton_modifyPerson"
         android:layout_below="@+id/imageButton_personAccount"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="600dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageButton3"
-        android:layout_below="@+id/imageButton2"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="600dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageButton4"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/imageButton3"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="600dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageButton_midifyPassword"
+        android:layout_below="@+id/imageButton_modifyPerson"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="600dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageButton_logOff"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/imageButton_midifyPassword"
         android:layout_marginTop="60dp"/>
 
 </RelativeLayout>

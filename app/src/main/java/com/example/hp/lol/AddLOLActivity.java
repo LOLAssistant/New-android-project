@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +20,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 
-public class MainActivity5 extends Activity implements View.OnClickListener{
+public class AddLOLActivity extends Activity implements View.OnClickListener{
 
     private ImageButton imageButton_add_ensure;
     private ImageButton imageButton_add_cancel;
@@ -40,16 +39,16 @@ public class MainActivity5 extends Activity implements View.OnClickListener{
 
                 switch (msg.what){
                     case 0:
-                        Toast.makeText(MainActivity5.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddLOLActivity.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
                         Intent intent=new Intent();
-                        intent.setClass(MainActivity5.this,MainActivity4.class);
+                        intent.setClass(AddLOLActivity.this,PersonLOLActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        Toast.makeText(MainActivity5.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddLOLActivity.this,"用户名或密码错误", Toast.LENGTH_LONG).show();
                         break;
                     case 2:
-                        Toast.makeText(MainActivity5.this,"服务器问题，请稍后再试",Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddLOLActivity.this,"服务器问题，请稍后再试",Toast.LENGTH_LONG).show();
                         break;
                     default:
                         super.handleMessage(msg);
@@ -135,7 +134,7 @@ public class MainActivity5 extends Activity implements View.OnClickListener{
                 break;
 
             case R.id.imageButton_add_cancel:
-                intent.setClass(MainActivity5.this,MainActivity4.class);
+                intent.setClass(AddLOLActivity.this,PersonLOLActivity.class);
                 startActivity(intent);
                 break;
         }

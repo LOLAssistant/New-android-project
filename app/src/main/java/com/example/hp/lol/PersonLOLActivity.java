@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MainActivity4 extends Activity implements View.OnClickListener{
+public class PersonLOLActivity extends Activity implements View.OnClickListener{
     private ListView listView;
     SimpleAdapter simpleAdapter;
     private List<Map<String,Object>> listItem;
@@ -87,7 +87,7 @@ public class MainActivity4 extends Activity implements View.OnClickListener{
 
     //
     private void DeleteDialog(final int position){
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity4.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(PersonLOLActivity.this);
         //final int pos = position;
         builder.setMessage("确定删除此项？");
         builder.setTitle("提示");
@@ -95,7 +95,7 @@ public class MainActivity4 extends Activity implements View.OnClickListener{
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 listItem.remove(position);
-                simpleAdapter = new SimpleAdapter(MainActivity4.this,listItem,R.layout.account_item_layout,new String[]{"name","level","state"},new int[]{R.id.textView_account_name,R.id.textView_account_level,R.id.imageView_account_state});
+                simpleAdapter = new SimpleAdapter(PersonLOLActivity.this,listItem,R.layout.account_item_layout,new String[]{"name","level","state"},new int[]{R.id.textView_account_name,R.id.textView_account_level,R.id.imageView_account_state});
                 listView.setAdapter(simpleAdapter);
             }
         });
@@ -113,14 +113,14 @@ public class MainActivity4 extends Activity implements View.OnClickListener{
         switch (v.getId()){
             case R.id.imageButton_add:
 
-                intent.setClass(MainActivity4.this,MainActivity5.class);
+                intent.setClass(PersonLOLActivity.this,AddLOLActivity.class);
                 startActivity(intent);
                 finish();
                 break;
 
             case R.id.imageButton_personAccount_back:
                 //Intent intent2 = new Intent();
-                intent.setClass(MainActivity4.this,MainActivity2.class);
+                intent.setClass(PersonLOLActivity.this,HomeActivity.class);
                 startActivity(intent);
                 finish();
                 break;

@@ -89,69 +89,70 @@ public class RegisterFragment extends Fragment {
 
                     return;
                 }
+                handler.sendEmptyMessage(0);
 
-                new Thread(){
-
-
-                    @Override
-                    public void run() {
-
-
-                        String pathUrl = "http://10.0.2.2:30539/register";
-                        //建立连接
-                        URL url= null;
-                        try {
-                            url = new URL(pathUrl);
-                            HttpURLConnection httpConn=(HttpURLConnection)url.openConnection();
-
-                            ////设置连接属性
-                            httpConn.setDoOutput(true);//使用 URL 连接进行输出
-                            httpConn.setDoInput(true);//使用 URL 连接进行输入
-                            httpConn.setRequestMethod("POST");//设置URL请求方法
-
-                            //设置请求属性
-                            //获得数据字节数据，请求数据流的编码，必须和下面服务器端处理请求流的编码一致
-                            httpConn.setRequestProperty("Charset", "UTF-8");
-                            httpConn.setRequestProperty("accept", "*/*");
-
-
-                            OutputStream outputStream = httpConn.getOutputStream();
-                            outputStream.write(("username=" + username + "&" + "password=" + password + "&" + "nickname=" + nickname + "&" + "id=" + id + "&" + "phone=" + phone + "&" + "email=" + email).getBytes());
-                            //outputStream.write(("password="+ URLEncoder.encode(password,"utf-8")).getBytes());
-
-                            outputStream.flush();
-                            outputStream.close();
-
-                            int responseCode = httpConn.getResponseCode();
-                            if(200== responseCode){//连接成功
-
-                                //当正确响应时处理数据
-                               // StringBuffer sb = new StringBuffer();
-                                String readLine;
-                                BufferedReader responseReader;
-                                responseReader = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
-
-                                String result=responseReader.readLine();
-                                if(result.equals("true")){
-
-                                    handler.sendEmptyMessage(0);
-
-                                }else{
-                                    handler.sendEmptyMessage(1);
-                                }
-
-                            }else{
-                                handler.sendEmptyMessage(2);
-                            }
-                            httpConn.disconnect();
-
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }.start();
+//                new Thread(){
+//
+//
+//                    @Override
+//                    public void run() {
+//
+//
+//                        String pathUrl = "http://10.0.2.2:30539/register";
+//                        //建立连接
+//                        URL url= null;
+//                        try {
+//                            url = new URL(pathUrl);
+//                            HttpURLConnection httpConn=(HttpURLConnection)url.openConnection();
+//
+//                            ////设置连接属性
+//                            httpConn.setDoOutput(true);//使用 URL 连接进行输出
+//                            httpConn.setDoInput(true);//使用 URL 连接进行输入
+//                            httpConn.setRequestMethod("POST");//设置URL请求方法
+//
+//                            //设置请求属性
+//                            //获得数据字节数据，请求数据流的编码，必须和下面服务器端处理请求流的编码一致
+//                            httpConn.setRequestProperty("Charset", "UTF-8");
+//                            httpConn.setRequestProperty("accept", "*/*");
+//
+//
+//                            OutputStream outputStream = httpConn.getOutputStream();
+//                            outputStream.write(("username=" + username + "&" + "password=" + password + "&" + "nickname=" + nickname + "&" + "id=" + id + "&" + "phone=" + phone + "&" + "email=" + email).getBytes());
+//                            //outputStream.write(("password="+ URLEncoder.encode(password,"utf-8")).getBytes());
+//
+//                            outputStream.flush();
+//                            outputStream.close();
+//
+//                            int responseCode = httpConn.getResponseCode();
+//                            if(200== responseCode){//连接成功
+//
+//                                //当正确响应时处理数据
+//                               // StringBuffer sb = new StringBuffer();
+//                                String readLine;
+//                                BufferedReader responseReader;
+//                                responseReader = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
+//
+//                                String result=responseReader.readLine();
+//                                if(result.equals("true")){
+//
+//                                    handler.sendEmptyMessage(0);
+//
+//                                }else{
+//                                    handler.sendEmptyMessage(1);
+//                                }
+//
+//                            }else{
+//                                handler.sendEmptyMessage(2);
+//                            }
+//                            httpConn.disconnect();
+//
+//
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                }.start();
 
             }
         });
